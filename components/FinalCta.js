@@ -47,9 +47,6 @@ export default function FinalCta() {
 
       <section id="final-cta-section" className="py-12 sm:py-16 bg-[#F5F5F5]">
         <div className="container mx-auto px-4 text-center">
-          <div className="flex justify-center items-center mb-4">
-            <img src={finalCta.image2} alt="" className="w-full max-w-[300px] sm:max-w-md h-auto" />
-          </div>
           <p className="text-xl sm:text-2xl text-gray-500 line-through">{finalCta.oldPrice}</p>
           <p className="text-xl sm:text-2xl text-[#333]">{finalCta.finalPriceLabel}</p>
           <p className="text-5xl sm:text-6xl font-extrabold text-[#7ED957] my-2">{finalCta.finalPrice}</p>

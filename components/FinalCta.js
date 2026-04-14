@@ -35,14 +35,20 @@ export default function FinalCta() {
       </section>
 
       <section className="py-12 bg-[#7ED957]">
-        <h2 className="text-3xl sm:text-4xl font-extrabold text-white text-center px-4">{awayFromTheStove.headline}</h2>
+        <div className="container mx-auto px-4 text-center">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-white text-center px-4">{awayFromTheStove.headline}</h2>
+          <img
+            src={finalCta.image2}
+            alt=""
+            className="mt-8 w-full max-w-[300px] sm:max-w-md h-auto mx-auto"
+          />
+        </div>
       </section>
 
       <section id="final-cta-section" className="py-12 sm:py-16 bg-[#F5F5F5]">
         <div className="container mx-auto px-4 text-center">
-          <div className="flex flex-col sm:flex-row justify-center items-center gap-4 mb-4">
-            <img src={finalCta.image1} alt="" className="w-16 sm:w-20 h-auto" />
-            <img src={finalCta.image2} alt="" className="w-full max-w-[280px] sm:max-w-md h-auto" />
+          <div className="flex justify-center items-center mb-4">
+            <img src={finalCta.image2} alt="" className="w-full max-w-[300px] sm:max-w-md h-auto" />
           </div>
           <p className="text-xl sm:text-2xl text-gray-500 line-through">{finalCta.oldPrice}</p>
           <p className="text-xl sm:text-2xl text-[#333]">{finalCta.finalPriceLabel}</p>

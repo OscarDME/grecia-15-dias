@@ -64,9 +64,8 @@ export default function Closing() {
         <div className="container mx-auto px-4">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#333] leading-tight">{lastChance.headline1} <span className="text-[#7ED957]">{lastChance.headline2}</span> {lastChance.headline3}</h2>
           <div className="mt-10 sm:mt-12">
-            <div className="flex flex-col sm:flex-row justify-center items-center gap-4 mb-4">
-              <img src={finalOffer.image1} alt="" className="w-16 sm:w-20 h-auto" />
-              <img src={finalOffer.image2} alt="" className="w-full max-w-[280px] sm:max-w-md h-auto" />
+            <div className="flex justify-center items-center mb-4">
+              <img src={finalOffer.image2} alt="" className="w-full max-w-[300px] sm:max-w-md h-auto" />
             </div>
             <p className="text-xl sm:text-2xl text-gray-500 line-through">{finalOffer.oldPrice}</p>
             <p className="text-xl sm:text-2xl text-[#333]">{finalOffer.finalPriceLabel}</p>

@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react';
 import { copy } from '@/lib/copy';
 
-const BASE_CHECKOUT_URL = "https://www.oriopay.app/p/15imero-menou";
+const BASE_CHECKOUT_URL = "https://www.oriopay.app/p/15-dnevno-menyu";
 
 export default function Closing() {
   const [checkoutUrl, setCheckoutUrl] = useState(BASE_CHECKOUT_URL);

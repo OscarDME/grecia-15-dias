@@ -1,79 +1,80 @@
-import { copy } from '@/lib/copy';
+"use client";
+
+import { useRef } from "react";
+import { copy } from "@/lib/copy";
 
 export default function Testimonials() {
   const { testimonials } = copy;
-  const chatTimes = ['09:14', '10:27', '18:42', '21:05'];
+  const chatTimes = ["09:42", "10:15", "11:08", "18:31"];
+  const trackRef = useRef(null);
 
-  const getInitials = (author) =>
-    author
-      .split(',')
-      .shift()
-      ?.trim()
-      .split(' ')
-      .filter(Boolean)
-      .slice(0, 2)
-      .map((part) => part[0]?.toUpperCase())
-      .join('') || 'U';
+  const scrollCards = (direction) => {
+    const track = trackRef.current;
+    if (!track) return;
+    const card = track.querySelector("[data-testimonial-card]");
+    const jump = (card?.clientWidth || 420) + 24;
+    track.scrollBy({ left: direction * jump, behavior: "smooth" });
+  };
 
   return (
-    <section className="py-12 sm:py-16 bg-[#f4f7f6]">
+    <section className="py-12 sm:py-16 bg-[#f0f1eb]">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl sm:text-4xl font-bold text-[#333] text-center max-w-3xl mx-auto">{testimonials.headline}</h2>
-        <div className="mt-10 max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
-          {testimonials.messages.map((item, index) => (
-            <article key={index} className="select-none rounded-2xl border border-black/10 shadow-[0_16px_30px_rgba(0,0,0,0.14)] overflow-hidden bg-white">
-              <div className="px-4 py-3 bg-[#075e54] text-white flex items-center justify-between">
-                <div className="flex items-center gap-3">
-                  <div className="w-9 h-9 rounded-full bg-[#d6e9df] text-[#075e54] font-bold text-sm flex items-center justify-center">
-                    {getInitials(item.author)}
-                  </div>
-                  <p className="font-semibold text-sm">{item.author}</p>
-                </div>
-                <div className="flex items-center gap-1.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-white/90" />
-                  <span className="w-1.5 h-1.5 rounded-full bg-white/90" />
-                  <span className="w-1.5 h-1.5 rounded-full bg-white/90" />
-                </div>
-              </div>
+        <h2 className="text-3xl sm:text-4xl font-bold text-[#333] text-center max-w-3xl mx-auto">
+          {testimonials.headline}
+        </h2>
 
-              <div
-                className="p-4 min-h-[260px]"
-                style={{
-                  backgroundColor: '#e5ddd5',
-                  backgroundImage:
-                    'radial-gradient(circle at 25% 25%, rgba(255,255,255,0.33) 1px, transparent 1.5px), radial-gradient(circle at 75% 75%, rgba(255,255,255,0.26) 1px, transparent 1.5px)',
-                  backgroundSize: '28px 28px',
-                }}
+        <div className="mt-10 relative">
+          <button
+            type="button"
+            onClick={() => scrollCards(-1)}
+            className="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/2 z-10 h-14 w-14 items-center justify-center rounded-full bg-white text-4xl text-gray-500 shadow-[0_8px_20px_rgba(0,0,0,0.18)]"
+            aria-label="Anterior"
+          >
+            ‹
+          </button>
+          <button
+            type="button"
+            onClick={() => scrollCards(1)}
+            className="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 z-10 h-14 w-14 items-center justify-center rounded-full bg-white text-4xl text-gray-500 shadow-[0_8px_20px_rgba(0,0,0,0.18)]"
+            aria-label="Siguiente"
+          >
+            ›
+          </button>
+
+          <div
+            ref={trackRef}
+            className="flex gap-6 overflow-x-auto snap-x snap-mandatory pb-4 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+          >
+            {testimonials.messages.map((item, index) => (
+              <article
+                key={index}
+                data-testimonial-card
+                className="snap-start shrink-0 w-[86vw] sm:w-[560px] rounded-[26px] bg-[#e8e9e3] shadow-[0_16px_28px_rgba(0,0,0,0.12)] overflow-hidden"
               >
-                <div className="flex justify-center mb-3">
-                  <span className="rounded-full bg-white/75 px-3 py-1 text-[11px] text-gray-600">{chatTimes[index % chatTimes.length]}</span>
-                </div>
-
-                <div className={`flex ${item.side === 'left' ? 'justify-start' : 'justify-end'}`}>
-                  <div
-                    className={`relative max-w-[87%] rounded-2xl px-4 py-3 shadow-md ${
-                      item.side === 'left' ? 'bg-white' : 'bg-[#dcf8c6]'
-                    }`}
-                  >
-                    <span
-                      className={`absolute bottom-1 w-3 h-3 rotate-45 ${
-                        item.side === 'left' ? '-left-1 bg-white' : '-right-1 bg-[#dcf8c6]'
-                      }`}
-                      aria-hidden="true"
-                    />
-                    <p className="relative z-10 text-[15px] leading-relaxed text-gray-900">{item.text}</p>
-                    <div className="relative z-10 mt-2 flex items-center justify-end gap-1.5 text-[11px] text-gray-500">
+                <div
+                  className="p-5 sm:p-6 min-h-[340px] flex items-start"
+                  style={{
+                    backgroundImage: "url('/wallpaper-whatsapp.webp')",
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                  }}
+                >
+                  <div className="w-full rounded-2xl bg-[#bff0be] px-5 py-4 sm:px-6 sm:py-5 shadow-[0_6px_14px_rgba(0,0,0,0.12)]">
+                    <p className="text-[24px] sm:text-[28px] lg:text-[32px] leading-[1.35] text-[#1f2d2a]">
+                      {item.text}
+                    </p>
+                    <div className="mt-3 flex items-center justify-end gap-2 text-[22px] sm:text-[26px] text-[#6c7980]">
                       <span>{chatTimes[index % chatTimes.length]}</span>
-                      {item.side === 'right' && (
-                        <span className="text-[#53bdeb] font-bold tracking-[-1px]">✓✓</span>
-                      )}
+                      <span className="text-[#58b7de] font-bold tracking-[-0.08em]">✓✓</span>
                     </div>
                   </div>
                 </div>
-              </div>
-            </article>
-          ))}
+                <div className="h-[84px] bg-[#e8e9e3]" />
+              </article>
+            ))}
+          </div>
         </div>
+
         <div className="text-center pt-8">
           <span className="inline-block rounded-full bg-[#7ED957] px-5 py-2 text-sm font-semibold text-white shadow-md">
             {testimonials.footerNote}

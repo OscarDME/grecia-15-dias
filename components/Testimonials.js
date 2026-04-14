@@ -65,7 +65,17 @@ export default function Testimonials() {
                     </p>
                     <div className="mt-3 flex items-center justify-end gap-2 text-[22px] sm:text-[26px] text-[#6c7980]">
                       <span>{chatTimes[index % chatTimes.length]}</span>
-                      <span className="text-[#58b7de] font-bold tracking-[-0.08em]">✓✓</span>
+                      <span aria-hidden="true" className="inline-flex items-center">
+                        <svg
+                          viewBox="0 0 18 12"
+                          className="h-[16px] w-[24px] sm:h-[18px] sm:w-[26px] drop-shadow-[0_0.5px_0_rgba(255,255,255,0.45)]"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path d="M1.4 6.3L4.4 9.3L9.1 3.8" stroke="#53BDEB" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                          <path d="M6.1 6.3L9.1 9.3L13.8 3.8" stroke="#53BDEB" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                      </span>
                     </div>
                   </div>
                 </div>

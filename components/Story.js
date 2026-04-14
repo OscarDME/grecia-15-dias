@@ -5,8 +5,8 @@ export default function Story() {
   const cyclePointPositions = [
     'lg:left-1/2 lg:-translate-x-1/2 lg:top-6 lg:text-center lg:max-w-[320px]',
     'lg:right-[2%] lg:top-[30%] lg:text-left lg:max-w-[280px]',
-    'lg:right-[5%] lg:bottom-[14%] lg:text-left lg:max-w-[300px]',
-    'lg:left-[5%] lg:bottom-[14%] lg:text-right lg:max-w-[300px]',
+    'lg:right-[-1%] lg:bottom-[10%] lg:text-left lg:max-w-[280px]',
+    'lg:left-[-1%] lg:bottom-[10%] lg:text-right lg:max-w-[280px]',
     'lg:left-[2%] lg:top-[30%] lg:text-right lg:max-w-[280px]',
   ];
 
@@ -31,7 +31,7 @@ export default function Story() {
             <div className="relative hidden lg:block min-h-[660px]">
               <svg
                 viewBox="0 0 1000 660"
-                className="absolute inset-0 w-full h-full pointer-events-none"
+                className="absolute inset-0 w-full h-full pointer-events-none z-0"
                 aria-hidden="true"
               >
                 <defs>
@@ -51,8 +51,8 @@ export default function Story() {
                 <path d="M815 420 C795 500, 740 545, 665 550" fill="none" stroke="#222" strokeWidth="3" markerEnd="url(#cycle-arrow)" />
                 <path d="M335 548 C260 535, 205 480, 190 405" fill="none" stroke="#222" strokeWidth="3" markerEnd="url(#cycle-arrow)" />
               </svg>
-              <div className="absolute left-1/2 top-[54%] -translate-x-1/2 -translate-y-1/2 w-[530px] h-[530px] rounded-full border-2 border-[#d2d2d2]" />
-              <div className="absolute left-1/2 top-[54%] -translate-x-1/2 -translate-y-1/2 w-[370px] h-[370px] rounded-full overflow-hidden shadow-xl border-[10px] border-[#f3f3f3]">
+              <div className="absolute z-10 left-1/2 top-[54%] -translate-x-1/2 -translate-y-1/2 w-[530px] h-[530px] rounded-full border-2 border-[#d2d2d2]" />
+              <div className="absolute z-30 left-1/2 top-[54%] -translate-x-1/2 -translate-y-1/2 w-[370px] h-[370px] rounded-full overflow-hidden shadow-xl border-[10px] border-[#f3f3f3]">
                 <img
                   src={viciousCycle.centerImage}
                   alt=""
@@ -63,7 +63,7 @@ export default function Story() {
               {viciousCycle.points.map((point, index) => (
                 <p
                   key={index}
-                  className={`absolute text-[22px]/[1.16] xl:text-[26px]/[1.14] font-black text-[#171717] ${cyclePointPositions[index] ?? ''}`}
+                  className={`absolute z-20 text-[22px]/[1.16] xl:text-[26px]/[1.14] font-black text-[#171717] ${cyclePointPositions[index] ?? ''}`}
                 >
                   {point}
                 </p>

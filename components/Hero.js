@@ -69,7 +69,7 @@ export default function Hero() {
             <img
               src={hero.mainImage}
               alt=""
-              className="w-full max-w-[360px] sm:max-w-[520px] h-auto rounded-lg mx-auto"
+              className="w-[88vw] max-w-[360px] sm:w-full sm:max-w-[520px] aspect-square object-cover object-center rounded-lg mx-auto"
             />
           </div>
         </div>

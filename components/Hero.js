@@ -34,6 +34,10 @@ export default function Hero() {
     return () => clearInterval(timer);
   }, []);
 
+  const scrollToLastCta = () => {
+    document.getElementById("last-cta-button")?.scrollIntoView({ behavior: "smooth", block: "center" });
+  };
+
   return (
     <section className="bg-[#F5F5F5] pt-8 pb-12 sm:pb-16">
       <div className="container mx-auto px-4">
@@ -55,14 +59,18 @@ export default function Hero() {
               )}
             </div>
             <button 
-              onClick={() => document.getElementById('final-cta-section')?.scrollIntoView({ behavior: 'smooth' })}
+              onClick={scrollToLastCta}
               className="mt-8 w-full max-w-sm mx-auto lg:mx-0 bg-[#7ED957] text-white text-lg sm:text-xl md:text-2xl font-bold py-3.5 sm:py-4 px-6 sm:px-8 rounded-full shadow-lg hover:bg-[#6cc34a] transition-colors duration-300 transform hover:scale-105"
             >
               {hero.cta}
             </button>
           </div>
-          <div className="lg:w-1/2 flex justify-center">
-            <img src={hero.mainImage} alt="" className="max-w-full h-auto rounded-lg w-full sm:w-auto sm:max-w-[520px]" />
+          <div className="w-full lg:w-1/2 flex justify-center">
+            <img
+              src={hero.mainImage}
+              alt=""
+              className="w-full max-w-[360px] sm:max-w-[520px] h-auto rounded-lg mx-auto"
+            />
           </div>
         </div>
       </div>

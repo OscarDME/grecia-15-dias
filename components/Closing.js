@@ -26,6 +26,28 @@ export default function Closing() {
     } catch (e) {}
   }, []);
 
+  const handleBeginCheckout = () => {
+    try {
+      let priceNum = 0;
+      if (finalOffer.finalPrice) {
+        const cleaned = String(finalOffer.finalPrice).replace(/[^\d.,]/g, "").replace(",", ".");
+        const parsed = parseFloat(cleaned);
+        if (Number.isFinite(parsed)) priceNum = parsed;
+      }
+      if (typeof window !== "undefined") {
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+          event: "begin_checkout",
+          value: priceNum,
+          currency: "EUR",
+          items: [{ item_id: "product_cta", item_name: "Final CTA Button", price: priceNum }],
+        });
+      }
+    } catch (err) {
+      console.error("Analytics error:", err);
+    }
+  };
+
   return (
     <>
       <section className="py-12 bg-[#7ED957]">
@@ -51,7 +73,9 @@ export default function Closing() {
             <p className="text-5xl sm:text-6xl font-extrabold text-[#7ED957] my-2">{finalOffer.finalPrice}</p>
             <p className="text-sm text-gray-600 mt-2">{finalOffer.paymentInfo}</p>
             <a 
+              id="last-cta-button"
               href={checkoutUrl} 
+              onClick={handleBeginCheckout}
               className="mt-8 inline-block w-full max-w-sm bg-[#7ED957] text-white text-xl sm:text-2xl font-bold py-4 sm:py-5 px-6 sm:px-8 rounded-full shadow-lg hover:bg-[#6cc34a] transition-colors duration-300 transform hover:scale-105"
             >
               {finalOffer.button}

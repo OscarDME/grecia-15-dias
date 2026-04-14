@@ -1,53 +1,11 @@
 "use client";
-import { useState, useEffect } from "react";
 import { copy } from "@/lib/copy";
 
-const BASE_CHECKOUT_URL = "https://www.oriopay.app/p/15imero-menou";
-
 export default function FinalCta() {
-  const [checkoutUrl, setCheckoutUrl] = useState(BASE_CHECKOUT_URL);
   const { finalCta, lifeSummary, awayFromTheStove, sevenDayGuarantee, methodCreator } = copy;
 
-  useEffect(() => {
-    try {
-      if (typeof window !== "undefined") {
-        const params = new URLSearchParams(window.location.search);
-        let src = params.get("src");
-        let fbclid = params.get("fbclid");
-        if (!src) src = localStorage.getItem("hotmart_src");
-        if (!fbclid) fbclid = localStorage.getItem("hotmart_fbclid");
-        if (src || fbclid) {
-          const urlObj = new URL(BASE_CHECKOUT_URL);
-          if (src) urlObj.searchParams.set("src", src);
-          if (fbclid) urlObj.searchParams.set("fbclid", fbclid);
-          setCheckoutUrl(urlObj.toString());
-        }
-      }
-    } catch (error) {
-      console.error("Error building checkout URL:", error);
-    }
-  }, []);
-
-  const handleBeginCheckout = () => {
-    try {
-      let priceNum = 0;
-      if (finalCta.finalPrice) {
-        const cleaned = String(finalCta.finalPrice).replace(/[^\d.,]/g, "").replace(",", ".");
-        const parsed = parseFloat(cleaned);
-        if (Number.isFinite(parsed)) priceNum = parsed;
-      }
-      if (typeof window !== "undefined") {
-        window.dataLayer = window.dataLayer || [];
-        window.dataLayer.push({
-          event: "begin_checkout",
-          value: priceNum,
-          currency: "EUR",
-          items: [{ item_id: "product_cta", item_name: "Final CTA Button", price: priceNum }],
-        });
-      }
-    } catch (err) {
-      console.error("Analytics error:", err);
-    }
+  const scrollToLastCta = () => {
+    document.getElementById("last-cta-button")?.scrollIntoView({ behavior: "smooth", block: "center" });
   };
 
   return (
@@ -90,13 +48,13 @@ export default function FinalCta() {
           <p className="text-xl sm:text-2xl text-[#333]">{finalCta.finalPriceLabel}</p>
           <p className="text-5xl sm:text-6xl font-extrabold text-[#7ED957] my-2">{finalCta.finalPrice}</p>
           <p className="text-sm text-gray-600 mt-2">{finalCta.paymentInfo}</p>
-          <a 
-            href={checkoutUrl} 
-            onClick={handleBeginCheckout}
+          <button
+            type="button"
+            onClick={scrollToLastCta}
             className="mt-8 inline-block w-full max-w-sm bg-[#7ED957] text-white text-xl sm:text-2xl font-bold py-4 sm:py-5 px-6 sm:px-8 rounded-full shadow-lg hover:bg-[#6cc34a] transition-colors duration-300 transform hover:scale-105"
           >
             {finalCta.button}
-          </a>
+          </button>
         </div>
       </section>
 

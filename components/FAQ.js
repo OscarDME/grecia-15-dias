@@ -12,15 +12,15 @@ export default function FAQ() {
   };
 
   return (
-    <section className="py-16 bg-white">
+    <section className="py-12 sm:py-16 bg-white">
       <div className="container mx-auto px-4">
-        <h2 className="text-4xl font-bold text-center text-[#333] mb-12">{faq.headline}</h2>
+        <h2 className="text-3xl sm:text-4xl font-bold text-center text-[#333] mb-8 sm:mb-12">{faq.headline}</h2>
         <div className="max-w-3xl mx-auto">
           {faq.items.map((item, index) => (
             <div key={index} className="border-b border-gray-200 py-4">
               <button 
                 onClick={() => toggleFAQ(index)} 
-                className="w-full flex justify-between items-center text-left text-lg font-semibold text-gray-800"
+                className="w-full flex justify-between items-center gap-4 text-left text-base sm:text-lg font-semibold text-gray-800"
               >
                 <span>{item.question}</span>
                 <ChevronDown className={`transform transition-transform duration-300 ${openIndex === index ? 'rotate-180' : ''}`} />

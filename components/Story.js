@@ -12,11 +12,11 @@ export default function Story() {
 
   return (
     <>
-      <section className="py-16 bg-white">
+      <section className="py-12 sm:py-16 bg-white">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-[#333] max-w-3xl mx-auto">{story.headline1}</h2>
-          <h3 className="text-3xl md:text-4xl font-bold text-[#7ED957] max-w-3xl mx-auto mt-2">{story.headline2}</h3>
-          <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#333] max-w-3xl mx-auto">{story.headline1}</h2>
+          <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#7ED957] max-w-3xl mx-auto mt-2">{story.headline2}</h3>
+          <div className="mt-10 sm:mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
             {story.images.map((src, index) => (
               <img key={index} src={src} alt="" className="w-full h-auto rounded-lg shadow-lg" />
             ))}
@@ -24,9 +24,9 @@ export default function Story() {
         </div>
       </section>
 
-      <section className="py-16 bg-[#F5F5F5]">
+      <section className="py-12 sm:py-16 bg-[#F5F5F5]">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-[#333]">{viciousCycle.headline1} <span className="text-[#7ED957]">{viciousCycle.headline2}</span></h2>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#333]">{viciousCycle.headline1} <span className="text-[#7ED957]">{viciousCycle.headline2}</span></h2>
           <div className="mt-8 lg:mt-12 max-w-5xl mx-auto">
             <div className="relative hidden lg:block min-h-[660px]">
               <svg
@@ -70,7 +70,7 @@ export default function Story() {
               ))}
             </div>
             <div className="lg:hidden">
-              <div className="w-72 h-72 mx-auto rounded-full overflow-hidden shadow-lg">
+              <div className="w-60 h-60 sm:w-72 sm:h-72 mx-auto rounded-full overflow-hidden shadow-lg">
                 <img
                   src={viciousCycle.centerImage}
                   alt=""
@@ -80,30 +80,30 @@ export default function Story() {
               </div>
               <ul className="mt-8 space-y-3 text-left max-w-md mx-auto">
                 {viciousCycle.points.map((point, index) => (
-                  <li key={index} className="text-lg font-semibold text-[#171717]">
+                  <li key={index} className="text-base sm:text-lg font-semibold text-[#171717]">
                     {point}
                   </li>
                 ))}
               </ul>
             </div>
           </div>
-          <p className="mt-8 text-xl text-gray-700">{viciousCycle.subheadline1}</p>
-          <p className="text-xl text-gray-700 font-semibold">{viciousCycle.subheadline2}</p>
+          <p className="mt-8 text-lg sm:text-xl text-gray-700">{viciousCycle.subheadline1}</p>
+          <p className="text-lg sm:text-xl text-gray-700 font-semibold">{viciousCycle.subheadline2}</p>
         </div>
       </section>
 
-      <section className="py-16 bg-white">
+      <section className="py-12 sm:py-16 bg-white">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-[#333]">{introducing.headline}</h2>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#333]">{introducing.headline}</h2>
         </div>
       </section>
 
-      <section className="py-16 bg-[#F5F5F5]">
+      <section className="py-12 sm:py-16 bg-[#F5F5F5]">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-4xl md:text-5xl font-extrabold text-[#333]">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#333] leading-tight">
             {solution.headline1} <span className="text-[#7ED957]">{solution.headline2}</span> {solution.headline3}
           </h2>
-          <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="mt-10 sm:mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
             {solution.images.map((src, index) => (
               <img key={index} src={src} alt="" className="w-full h-auto rounded-lg shadow-lg" />
             ))}

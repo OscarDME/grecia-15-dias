@@ -16,10 +16,10 @@ export default function Testimonials() {
       .join('') || 'U';
 
   return (
-    <section className="py-16 bg-[#f4f7f6]">
+    <section className="py-12 sm:py-16 bg-[#f4f7f6]">
       <div className="container mx-auto px-4">
-        <h2 className="text-4xl font-bold text-[#333] text-center max-w-3xl mx-auto">{testimonials.headline}</h2>
-        <div className="mt-10 max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+        <h2 className="text-3xl sm:text-4xl font-bold text-[#333] text-center max-w-3xl mx-auto">{testimonials.headline}</h2>
+        <div className="mt-10 max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
           {testimonials.messages.map((item, index) => (
             <article key={index} className="select-none rounded-2xl border border-black/10 shadow-[0_16px_30px_rgba(0,0,0,0.14)] overflow-hidden bg-white">
               <div className="px-4 py-3 bg-[#075e54] text-white flex items-center justify-between">

@@ -2,7 +2,7 @@ import { copy } from '@/lib/copy';
 
 export default function Features() {
   const { features, signatureQuote, goodNews, howItWorks, steps, freezingTechniques, bestPart } = copy;
-  const firstStep = steps[0];
+  
 
   return (
     <>
@@ -59,19 +59,21 @@ export default function Features() {
         </div>
       </section>
 
-      <section className="py-12 sm:py-16 bg-white">
-        <div className="container mx-auto px-4 text-center max-w-4xl">
-          <h3 className="text-2xl sm:text-3xl font-bold text-[#7ED957] mb-4">{firstStep.headline}</h3>
-          {firstStep.subheadline && <p className="text-lg sm:text-xl text-gray-700 mb-6">{firstStep.subheadline}</p>}
-          {Array.isArray(firstStep.quickList) && firstStep.quickList.length > 0 && (
-            <ul className="space-y-3 text-left max-w-2xl mx-auto list-disc list-inside">
-              {firstStep.quickList.map((item, index) => (
-                <li key={index} className="text-base sm:text-lg text-gray-700">{item}</li>
-              ))}
-            </ul>
-          )}
-        </div>
-      </section>
+      {steps.map((step, idx) => (
+        <section key={idx} className={`py-12 sm:py-16 ${idx % 2 === 0 ? "bg-white" : "bg-[#F5F5F5]"}`}>
+          <div className="container mx-auto px-4 text-center max-w-4xl">
+            <h3 className="text-2xl sm:text-3xl font-bold text-[#7ED957] mb-4">{step.headline}</h3>
+            {step.subheadline && <p className="text-lg sm:text-xl text-gray-700 mb-6">{step.subheadline}</p>}
+            {Array.isArray(step.quickList) && step.quickList.length > 0 && (
+              <ul className="space-y-3 text-left max-w-2xl mx-auto list-disc list-inside">
+                {step.quickList.map((item, index) => (
+                  <li key={index} className="text-base sm:text-lg text-gray-700">{item}</li>
+                ))}
+              </ul>
+            )}
+          </div>
+        </section>
+      ))}
 
       <section className="py-12 sm:py-16 bg-[#F5F5F5]">
         <div className="container mx-auto px-4">
